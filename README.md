@@ -7,6 +7,7 @@ An end-to-end differential DNA methylation analysis pipeline in R using the Bioc
 ## Overview
 
 The workflow processes paired green/red signal intensity data from Illumina Infinium HumanMethylation450 BeadChips:
+
 1. **Data Ingestion**: Parses `SampleSheet.csv` metadata and reads paired raw intensity `.idat` files into an `RGChannelSet` object.
 2. **Quality Control**:
    - Evaluates negative control probe fluorescence across arrays.
@@ -32,26 +33,10 @@ The workflow processes paired green/red signal intensity data from Illumina Infi
 
 ```text
 .
-├── DRD_2026_Report_pipeline.R     # Main analysis script
-├── Input_Data/                    # Raw data directory (untracked / locally stored)
-│   ├── SampleSheet_Report_II.csv  # Metadata sample sheet
-│   └── *.idat                     # Illumina raw signal intensity files
-├── Illumina450Manifest_clean.RData# 450K array probe manifest (CHR, MAPINFO, Design Type)
-├── .gitignore                     # Prevents tracking large binary artifacts (.idat, .RData)
-└── README.md                      # Project documentation
-
-# Install BiocManager if not present
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-# Bioconductor dependencies
-BiocManager::install(c("minfi", "IlluminaHumanMethylation450kmanifest", "IlluminaHumanMethylation450kanno.ilmn12.hg19"))
-
-# CRAN dependencies
-install.packages(c("qqman", "gplots"))
-
-source("DRD_2026_Report_pipeline.R")
-
-
-
-
+├── DRD_2026_Report_pipeline.R      # Main analysis script
+├── Input_Data/                     # Raw data directory (untracked / locally stored)
+│   ├── SampleSheet_Report_II.csv   # Metadata sample sheet
+│   └── *.idat                      # Illumina raw signal intensity files
+├── Illumina450Manifest_clean.RData # 450K array probe manifest (CHR, MAPINFO, Design Type)
+├── .gitignore                      # Prevents tracking large binary artifacts (.idat, .RData)
+└── README.md                       # Project documentation
